@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     // 设置侧边项目样式
-    this.slideInfo.setCurrentSlide(1);
+    this.slideInfo.setCurrentSlide(2);
   }
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MainComponent } from './component/main/main.component';
+import { RegComponent } from './component/reg/reg.component';
 import { AboutComponent } from './component/about/about.component';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent
+  },
+  {
+    path: 'reg',
+    component: RegComponent
   },
   {
     path: 'about',

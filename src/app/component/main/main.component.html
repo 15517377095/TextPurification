@@ -6,9 +6,9 @@
         </div>
         <div class="col-1"></div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="this.filesService.getFiles().length > 0">
         <div class="col filelist">
-            <table class="table" *ngIf="this.filesService.getFiles().length > 0">
+            <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">路径</th>
@@ -22,6 +22,11 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="this.filesService.getFiles().length > 0">
+        <div class="col-auto">
+            <button type="button" class="btn btn-link">开始净化</button>
         </div>
     </div>
 </div>

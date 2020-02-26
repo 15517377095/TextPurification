@@ -1,5 +1,7 @@
 import { Component, ViewChildren } from '@angular/core';
 import { SlideInfoService } from './services/slide-info.service';
+import { NodeService } from './services/node.service';
+import { RegService } from './services/reg.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,18 @@ import { SlideInfoService } from './services/slide-info.service';
 export class AppComponent {
   @ViewChildren("slideItem") slideItems: any;
 
-  constructor(private slideInfo: SlideInfoService) { }
+  private getRegFile(): string {
+    let file = this.nodeService.fs.readFileSync("D:\\reg.conf", (err) => {
+      if(err) return "";  // 若异常则是文件不存在
+    }).toString("UTF-8");
+    return file;
+  }
+
+  constructor(private slideInfo: SlideInfoService,
+    private nodeService: NodeService,
+    private regService: RegService) {
+    this.regService.setRegFile(this.getRegFile());
+  }
 
   ngAfterViewInit(): void {
     // 传递侧边项目dom给侧边项目服务

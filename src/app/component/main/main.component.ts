@@ -4,6 +4,7 @@ import { ElectronService } from 'src/app/services/electron.service';
 import { NodeService } from 'src/app/services/node.service';
 import { FilesService } from 'src/app/services/files.service';
 import * as $ from 'jquery';
+import { RegService } from 'src/app/services/reg.service';
 
 @Component({
   selector: 'app-main',
@@ -92,11 +93,14 @@ export class MainComponent implements OnInit {
     private slideInfo: SlideInfoService,
     private electron: ElectronService,
     private node: NodeService,
-    private filesService: FilesService) { }
+    private filesService: FilesService,
+    private regService: RegService) { }
 
   ngOnInit() {
     // 设置侧边项目样式
     this.slideInfo.setCurrentSlide(0);
+
+    console.log(this.regService.getReg());
   }
 
   ngAfterViewInit(): void {

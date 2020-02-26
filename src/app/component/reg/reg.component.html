@@ -1,0 +1,18 @@
+<div class="container-fluid reg">
+    <div class="row">
+        <div class="col">
+            <p>每行一个正则表达式，以回车分隔</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <textarea class="form-control" rows="5" [(ngModel)]="this.regService.regFile"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-auto mt-3">
+            <button type="button" class="btn btn-outline-primary" (click)="saveReg()">保存</button>
+        </div>
+    </div>
+</div>

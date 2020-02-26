@@ -1,27 +1,15 @@
-# Demo
+# 文本净化
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+使用正则表达式清除文本中的无用字符串
 
-## Development server
+version 1.0.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 启动项目
 
-## Code scaffolding
+项目基于 `electron` 和 `angular`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+运行 `npm run start` 同时并联启动 electron 和 angular. 要启动项目，必须更改 `/main.js` 中的 `loadFile` 为 `loadURL` 并指向 angular 调试地址 `http://localhost:4200/`，同时开启菜单栏使其可以刷新.
 
-## Build
+## 打包项目
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+运行 `npm run build` 打包 angular 项目，随后运行 `npm run electron-build` 打包 electron 项目.

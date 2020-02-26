@@ -8,6 +8,8 @@ export class RegService {
 
   public regFileOld: string;
 
+  public confPath: string = "D:\\reg.conf";
+
   public setRegFile(value): void {
     this.regFile = this.regFileOld = value;
   }

@@ -12,7 +12,7 @@ export class RegComponent implements OnInit {
   private regText: string = "aaa";
 
   public saveReg(): void {
-    this.nodeService.fs.writeFileSync(__dirname + "\\..\\..\\reg.conf", this.regService.regFile,
+    this.nodeService.fs.writeFileSync(this.regService.confPath, this.regService.regFile,
       {encoding:"UTF-8", mode:0o666, flag:"w"});  // w:只写，不存在则创建
     // 更新状态
     this.regService.setRegFile(this.regService.regFile);

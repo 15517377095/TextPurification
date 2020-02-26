@@ -12,9 +12,9 @@ export class AppComponent {
   @ViewChildren("slideItem") slideItems: any;
 
   private getRegFile(): string {
-    this.nodeService.fs.writeFileSync(__dirname + "\\..\\..\\reg.conf", "",
+    this.nodeService.fs.writeFileSync(this.regService.confPath, "",
       {encoding:"UTF-8", mode:0o666, flag:"a+"});
-    let file = this.nodeService.fs.readFileSync(__dirname + "\\..\\..\\reg.conf", (err) => {
+    let file = this.nodeService.fs.readFileSync(this.regService.confPath, (err) => {
       if(err) return "";  // 若异常则是文件不存在
     }).toString("UTF-8");
     return file;

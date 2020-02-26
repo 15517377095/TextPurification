@@ -10,7 +10,8 @@
   "main": "main.js",
   "scripts": {
     "start": "concurrently \"npm run serve\" \"npm run electron\" ",
-    "build": "electron-builder --win --x64",
+    "build": "ng build",
+    "electron-build": "electron-builder --win --x64",
     "serve": "ng serve",
     "electron": "electron ."
   },

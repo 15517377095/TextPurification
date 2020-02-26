@@ -4,7 +4,7 @@ const { app, BrowserWindow, Menu } = require('electron')
 // app加载完毕
 app.on('ready', () => {
   const mainWindow = new BrowserWindow({
-    width: 1200,
+    width: 1000,
     height: 660,
     webPreferences: {
       nodeIntegration: true
@@ -12,13 +12,13 @@ app.on('ready', () => {
   })
 
   // 加载 html 页面
-  mainWindow.loadURL('http://localhost:4200/')
+  mainWindow.loadFile('./dist/demo/index.html')
 
   // 打开控制台
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // 隐藏顶部菜单
-  // Menu.setApplicationMenu(null)
+  Menu.setApplicationMenu(null)
 })
 
 // macOS 的一些设置

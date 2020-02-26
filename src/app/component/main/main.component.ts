@@ -14,6 +14,42 @@ import { RegService } from 'src/app/services/reg.service';
 export class MainComponent implements OnInit {
   @ViewChild("inputBox",{static: true}) inputBox: ElementRef;
 
+  public startClear(): void {
+    // 备份原文件
+    this.backupFiles();
+
+    let regs = this.regService.getReg();
+    let files = this.filesService.getFiles();
+    // 遍历规则
+    for (let i in regs) {
+      let regExp = eval(regs[i]);
+      // 遍历文件
+      for (let j = 0; j < files.length; j++) {
+        // 删除符合规则的字符串
+        files[j].content = files[j].content.replace(regExp ,"");
+        // 保存文件
+        this.writeFiles();
+      }
+    }
+    alert("净化完成");
+  }
+
+  public writeFiles(): Boolean {
+    let files = this.filesService.getFiles();
+    for (let i in files) {
+      this.node.fs.writeFileSync(files[i].path, files[i].content,
+        {encoding:"UTF-8", mode:0o666, flag:"w"});
+    }
+    return true;
+}
+
+  public backupFiles(): void {
+    let files = this.filesService.getFiles();
+    for (let i in files) {
+      this.node.fs.renameSync(files[i].path, files[i].path + "_bk");
+    }
+  }
+
   // 弹出文件选择框
   public openDialog(): Array<string> {
     return this.electron.dialog.showOpenDialogSync({
@@ -99,8 +135,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     // 设置侧边项目样式
     this.slideInfo.setCurrentSlide(0);
-
-    console.log(this.regService.getReg());
   }
 
   ngAfterViewInit(): void {

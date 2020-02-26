@@ -26,7 +26,7 @@
     </div>
     <div class="row" *ngIf="this.filesService.getFiles().length > 0">
         <div class="col-auto">
-            <button type="button" class="btn btn-link">开始净化</button>
+            <button type="button" class="btn btn-link" (click)="startClear()">开始净化</button>
         </div>
     </div>
 </div>

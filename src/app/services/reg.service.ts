@@ -18,6 +18,16 @@ export class RegService {
     for(let i in regs) {
       // 去前后空格
       regs[i] = regs[i].trim();
+      // 清除注释行（#）
+      if(/[\s]*#/.test(regs[i])) {
+        regs[i] = null;
+      }
+    }
+    // 去空项
+    for(let i in regs) {
+      if(regs[i] == null || regs[i] == ""){
+        regs.splice(parseInt(i), 1);
+      }
     }
     return regs;
   }

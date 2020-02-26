@@ -11,6 +11,7 @@ export class AboutComponent implements OnInit {
   constructor(private slideInfo: SlideInfoService) { }
 
   ngOnInit() {
+    // 设置侧边项目样式
     this.slideInfo.setCurrentSlide(1);
   }
 

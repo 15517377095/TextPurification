@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(private slideInfo: SlideInfoService) { }
 
   ngAfterViewInit(): void {
+    // 传递侧边项目dom给侧边项目服务
     this.slideInfo.slideItems = this.slideItems;
   }
 

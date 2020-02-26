@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren } from '@angular/core';
+import { SlideInfoService } from './services/slide-info.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demo';
+  @ViewChildren("slideItem") slideItems: any;
+
+  constructor(private slideInfo: SlideInfoService) { }
+
+  ngAfterViewInit(): void {
+    this.slideInfo.slideItems = this.slideItems;
+  }
+
 }

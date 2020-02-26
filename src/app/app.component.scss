@@ -1,0 +1,36 @@
+.slide {
+    * {
+        transition: all 0.16s;
+    }
+    height: 100vh;
+    color: #EEEEEE;
+    font-size: 14px;
+    background: #2196F3;
+    .logo-text {
+        padding: 16px 12px;
+        font-size: 20px;
+        color: rgb(199, 230, 255);
+        &:hover {
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+    }
+    .items {
+        margin-top: 42px;
+        .item {
+            display: block;
+            color: #EAEAEA;
+            text-decoration: none;
+            text-align: center;
+            padding: 20px 0;
+            &:hover {
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+        }
+        .current-item {
+            background: #0C7CD5;
+            color: #FFFFFF;
+        }
+    }
+}

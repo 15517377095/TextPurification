@@ -1,3 +1,7 @@
+.app {
+    min-width: 500px;
+}
+
 .slide {
     * {
         transition: all 0.16s;
@@ -33,4 +37,8 @@
             color: #FFFFFF;
         }
     }
+}
+
+.outlet {
+    padding: 50px;
 }

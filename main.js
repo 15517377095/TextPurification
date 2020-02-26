@@ -1,5 +1,5 @@
 // 通过 require electron 来控制程序
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 // app加载完毕
 app.on('ready', () => {
@@ -16,6 +16,9 @@ app.on('ready', () => {
 
   // 打开控制台
   mainWindow.webContents.openDevTools()
+
+  // 隐藏顶部菜单
+  // Menu.setApplicationMenu(null)
 })
 
 // macOS 的一些设置

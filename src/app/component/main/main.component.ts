@@ -24,7 +24,9 @@ export class MainComponent implements OnInit {
   }
 
   public saveFile(path): void {
-    console.log(path)
+    if (!(/.txt/i.test(path))){
+      return;
+    }
     // 编码监测插件
     let jschardet = window['require']("jschardet");
     // 编码转换插件
@@ -35,7 +37,7 @@ export class MainComponent implements OnInit {
     });
     // 获取编码
     let fileEncoding = jschardet.detect(file).encoding;
-    console.log("encoding: " + fileEncoding);
+    // console.log("encoding: " + fileEncoding);
     // 进一步分为 GBK 或 UTF-8，并将Buffer转为文本
     if (fileEncoding == "TIS-620" ||
       fileEncoding == "GB2312") {
@@ -64,6 +66,28 @@ export class MainComponent implements OnInit {
     }
   }
 
+  // 移除项目
+  public removeItem(i): void {
+    this.filesService.remove(i);
+  }
+
+  public setDropEvent(): void {
+    let inputBox = $(".inputBox");
+
+    inputBox.on("dragenter dragover dragleave", event => {
+      event.preventDefault();
+    })
+
+    inputBox.on("drop", event => {
+      event.preventDefault();
+      let files = event.originalEvent.dataTransfer.files;
+      for (let i = 0; i < files.length; i++){
+        this.saveFile(files[i].path);
+      }
+      return false;
+    })
+  }
+
   constructor(
     private slideInfo: SlideInfoService,
     private electron: ElectronService,
@@ -73,25 +97,10 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     // 设置侧边项目样式
     this.slideInfo.setCurrentSlide(0);
-    console.log(this.filesService.getFiles());
   }
 
   ngAfterViewInit(): void {
-    let inputBox = $(".inputBox");
-
-    inputBox.on("dragenter dragover dragleave", event => {
-      event.preventDefault();
-    })
-
-    inputBox.on("drop", event => {
-      // 调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
-      event.preventDefault();
-      let files = event.originalEvent.dataTransfer.files;
-      for (let i = 0; i < files.length; i++){
-        this.saveFile(files[i].path);
-      }
-      return false;
-    })
+    this.setDropEvent();
   }
 
 }

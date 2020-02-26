@@ -17,6 +17,10 @@ export class FilesService {
     return true;
   }
 
+  public remove(i): void {
+    this.files.splice(i, 1);
+  }
+
   public getFiles(): Array<{path: string,content: string}> {
     return this.files;
   }
